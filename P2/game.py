@@ -115,7 +115,7 @@ class Configuration:
         direction = Actions.vectorToDirection(vector)
         if direction == Directions.STOP:
             direction = self.direction # There is no stop direction
-        return Configuration((x + dx, y+dy), direction)
+        return Configuration((x + dx, y + dy), direction)
 
 class AgentState:
     """
