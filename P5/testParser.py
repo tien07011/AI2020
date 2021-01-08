@@ -1,12 +1,3 @@
-# testParser.py
-# -------------
-# Licensing Information: Please do not distribute or publish solutions to this
-# project. You are free to use and extend these projects for educational
-# purposes. The Pacman AI projects were developed at UC Berkeley, primarily by
-# John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
-# Student side autograding was added by Brad Miller, Nick Hay, and Pieter 
-# Abbeel in Spring 2013.
-# For more info, see http://inst.eecs.berkeley.edu/~cs188/pacman/pacman.html
 
 import re
 import sys
@@ -14,11 +5,9 @@ import sys
 class TestParser(object):
     
     def __init__(self, path):
-        # save the path to the test file
         self.path = path
 
     def removeComments(self, rawlines):
-        # remove any portion of a line following a '#' symbol
         fixed_lines = []
         for l in rawlines:
             idx = l.find('#')
@@ -29,7 +18,6 @@ class TestParser(object):
         return '\n'.join(fixed_lines)
 
     def parse(self):
-        # read in the test case and remove comments
         test = {}
         with open(self.path) as handle:
             raw_lines = handle.read().split('\n')
@@ -40,10 +28,8 @@ class TestParser(object):
         test['__emit__'] = []
         lines = test_text.split('\n')
         i = 0
-        # read a property in each loop cycle
-        while(i < len(lines)):
-            # skip blank lines
-            if re.match('\A\s*\Z', lines[i]):
+          while(i < len(lines)):
+                  if re.match('\A\s*\Z', lines[i]):
                 test['__emit__'].append(("raw", raw_lines[i]))
                 i += 1
                 continue

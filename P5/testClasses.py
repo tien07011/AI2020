@@ -1,22 +1,8 @@
-# testClasses.py
-# --------------
-# Licensing Information: Please do not distribute or publish solutions to this
-# project. You are free to use and extend these projects for educational
-# purposes. The Pacman AI projects were developed at UC Berkeley, primarily by
-# John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
-# Student side autograding was added by Brad Miller, Nick Hay, and Pieter 
-# Abbeel in Spring 2013.
-# For more info, see http://inst.eecs.berkeley.edu/~cs188/pacman/pacman.html
 
-# import modules from python standard library
 import inspect
 import re
 import sys
 
-
-# Class which models a question in a project.  Note that questions have a
-# maximum number of points they are worth, and are composed of a series of
-# test cases
 class Question(object):
 
     def raiseNotDefined(self):
@@ -29,20 +15,16 @@ class Question(object):
 
     def getMaxPoints(self):
         return self.maxPoints
-
-    # Note that 'thunk' must be a function which accepts a single argument,
-    # namely a 'grading' object
     def addTestCase(self, testCase, thunk):        
         self.testCases.append((testCase, thunk))
 
     def execute(self, grades):
         self.raiseNotDefined()
 
-# Question in which all test cases must be passed in order to receive credit
 class PassAllTestsQuestion(Question):
 
     def execute(self, grades):
-        # TODO: is this the right way to use grades?  The autograder doesn't seem to use it.            
+        # TODO:           
         testsFailed = False
         grades.assignZeroCredit()
         for _, f in self.testCases:
@@ -53,13 +35,10 @@ class PassAllTestsQuestion(Question):
         else:
             grades.assignFullCredit()
             
-
-# Question in which predict credit is given for test cases with a ``points'' property.
-# All other tests are mandatory and must be passed.
 class HackedPartialCreditQuestion(Question):
 
     def execute(self, grades):
-        # TODO: is this the right way to use grades?  The autograder doesn't seem to use it.            
+        # TODO:           
         grades.assignZeroCredit()
         
         points = 0
@@ -71,7 +50,7 @@ class HackedPartialCreditQuestion(Question):
             else:
                 passed = passed and testResult        
         
-        ## FIXME: Below terrible hack to match q3's logic
+        ## FIXME: 
         if int(points) == self.maxPoints and not passed:
             grades.assignZeroCredit()
         else:
