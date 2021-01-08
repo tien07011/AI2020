@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 192e6b665c6a2331b8b9998d98d59d8be1415d39
 import random
 
 class MarkovDecisionProcess:
